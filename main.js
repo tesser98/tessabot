@@ -12,13 +12,11 @@ let cmd = messageArray[0];
 let args = messageArray.slice(1);
   
  if (cmd === `${Prefix}ping`) {
- EditMessage(msg)
+ async function EditMessage() {
+    const m = await msg.channel.send("Ping?");
+    return m.edit(`Pong! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`); 
+}
  }
 });
-
-async function EditMessage(message) {
-    const m = await message.channel.send("Ping?");
-    return m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`); 
-}
 
 client.login(process.env.token);
