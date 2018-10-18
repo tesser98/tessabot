@@ -7,12 +7,12 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 let Prefix = "!";
-let messageArray = message.content.split(" ");
+let messageArray = msg.content.split(" ");
 let cmd = messageArray[0];
 let args = messageArray.slice(1);
   
  if (cmd === `${Prefix}ping`) {
- EditMessage(message)
+ EditMessage(msg)
  }
 });
 
