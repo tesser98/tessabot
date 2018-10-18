@@ -6,9 +6,15 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
-  }
+let Prefix = "!";
+let messageArray = message.content.split(" ");
+let cmd = messageArray[0];
+let args = messageArray.slice(1);
+  
+ if (cmd === `${Prefix}ping`) {
+  const m = await message.channel.send("Ping?");
+  m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`); 
+}
 });
 
 client.login(process.env.token);
